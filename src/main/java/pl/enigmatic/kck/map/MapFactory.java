@@ -9,8 +9,12 @@ import pl.enigmatic.kck.components.Landmark;
 public class MapFactory {
 	private static final Random random = new Random(System.currentTimeMillis());
 
-	private static int rightBound = 300; // przerobić później na normalny
-	private static int bottomBound = 300;
+	private static int x = 3;
+	private static int y = 3;
+	private static int rightBound = x * 200; // przerobić później na normalny
+	private static int bottomBound = y * 200;
+
+	private static Boolean[][] QuantifiedMap = new Boolean[x][y]; //tablica kwadratów 200x200 pikseli
 	
 	private static String landmarksNames[] = { "czarnyDom.jpg",
 			"czerwonyDom.jpg", "zieloneDrzewo.jpg", "czarneDrzewo.jpg" };
@@ -25,6 +29,7 @@ public class MapFactory {
 		Landmark l = new Landmark(
 				landmarksNames[random.nextInt(landmarksNames.length)
 						% landmarksNames.length]);
+		
 		l.setCoordinate(randomCoordinate());
 	
 		return l;
@@ -53,11 +58,58 @@ public class MapFactory {
 	public static void setBottomBound(int bottom) {
 		bottomBound = bottom;
 	}
+	
+	public static Boolean[][] getQuantifiedMap() {
+		return QuantifiedMap;
+	}
+	
+	public static void setQuantifiedMapCoord(int x, int y, Boolean value) {
+		int i = mapToQMCoordinate(x);
+		int j = mapToQMCoordinate(y);
+		QuantifiedMap[i][j] = value;
+	}
+	
+	public static Boolean [][] resizeQM (Boolean [][] QuantifiedMap, int new_x, int new_y) {
+		int i = 0;
+		int j = 0;
+		
+		while ((i + 1) * 200 < new_x)
+			i++;
+		while ((j + 1) * 200 < new_y)
+			j++;
+		QuantifiedMap = new Boolean [new_x][new_y];
+		return QuantifiedMap;
+	}
+	
+	public static int coordinateQuantified(int x) {
+		int i = 200;
+		while (x > i)
+			i += 200;
+		return i - 100;
+	}
+	
+	public static int mapToQMCoordinate(int x) {
+		int i = 0;
+		while ((i + 1) * 200 < x)
+			i++;
+		return i;
+	}
 
 	private static Point randomCoordinate() {
 		Point p = new Point();
-		p.x = random.nextInt(rightBound) % rightBound;
-		p.y = random.nextInt(bottomBound) % bottomBound;
+		p.x = (random.nextInt(rightBound) % rightBound);
+		p.y = (random.nextInt(bottomBound) % bottomBound);
+		
+		//dopóki wylosowane punkty są już zajęte, losuj nowe
+		while (QuantifiedMap[mapToQMCoordinate(p.x)][mapToQMCoordinate(p.y)]) {
+			p.x = (random.nextInt(rightBound) % rightBound);
+			p.y = (random.nextInt(bottomBound) % bottomBound);
+		}
+		
+		p.x = coordinateQuantified(p.x);
+		p.y = coordinateQuantified(p.y);
+		setQuantifiedMapCoord(p.x, p.y, true);
+
 		return p;
 	}
 }

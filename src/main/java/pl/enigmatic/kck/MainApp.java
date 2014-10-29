@@ -88,7 +88,7 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 		
 		MapFactory.setBottomBound(p.getBottomBound());
 		MapFactory.setRightBound(p.getRightBound());
-		
+		MapFactory.resizeQM(MapFactory.getQuantifiedMap(), MapFactory.getRightBound(), MapFactory.getBottomBound());
 		Map map = MapFactory.createRandomMap(landmarksNumber);
 		
 		
