@@ -70,14 +70,9 @@ public class MapFactory {
 	}
 	
 	public static Boolean [][] resizeQM (Boolean [][] QuantifiedMap, int new_x, int new_y) {
-		int i = 0;
-		int j = 0;
-		
-		while ((i + 1) * 200 < new_x)
-			i++;
-		while ((j + 1) * 200 < new_y)
-			j++;
-		QuantifiedMap = new Boolean [new_x][new_y];
+		int i = mapToQMCoordinate(new_x);
+		int j = mapToQMCoordinate(new_y);
+		QuantifiedMap = new Boolean [i][j];
 		return QuantifiedMap;
 	}
 	
