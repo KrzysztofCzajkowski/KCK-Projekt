@@ -11,10 +11,10 @@ public class MapFactory {
 
 	private static int x = 3;
 	private static int y = 3;
-	private static int rightBound = x * 200; // przerobić później na normalny
-	private static int bottomBound = y * 200;
+	private static int rightBound = x * 50; // przerobić później na normalny
+	private static int bottomBound = y * 50;
 
-	private static Boolean[][] QuantifiedMap = new Boolean[x][y]; //tablica kwadratów 200x200 pikseli
+	private static QuantifiedMap QMap = new QuantifiedMap(x, y); //skwantowana mapa kwadratów o boku 50 pikseli
 	
 	private static String landmarksNames[] = { "czarnyDom.jpg",
 			"czerwonyDom.jpg", "zieloneDrzewo.jpg", "czarneDrzewo.jpg" };
@@ -31,7 +31,6 @@ public class MapFactory {
 						% landmarksNames.length]);
 		
 		l.setCoordinate(randomCoordinate());
-	
 		return l;
 	}
 
@@ -58,53 +57,48 @@ public class MapFactory {
 	public static void setBottomBound(int bottom) {
 		bottomBound = bottom;
 	}
-	
-	public static Boolean[][] getQuantifiedMap() {
-		return QuantifiedMap;
-	}
-	
-	public static void setQuantifiedMapCoord(int x, int y, Boolean value) {
-		int i = mapToQMCoordinate(x);
-		int j = mapToQMCoordinate(y);
-		QuantifiedMap[i][j] = value;
-	}
-	
-	public static Boolean [][] resizeQM (Boolean [][] QuantifiedMap, int new_x, int new_y) {
-		int i = mapToQMCoordinate(new_x);
-		int j = mapToQMCoordinate(new_y);
-		QuantifiedMap = new Boolean [i][j];
-		return QuantifiedMap;
-	}
-	
-	public static int coordinateQuantified(int x) {
-		int i = 200;
-		while (x > i)
-			i += 200;
-		return i - 100;
-	}
-	
-	public static int mapToQMCoordinate(int x) {
-		int i = 0;
-		while ((i + 1) * 200 < x)
-			i++;
-		return i;
-	}
 
 	private static Point randomCoordinate() {
 		Point p = new Point();
+		
+		for (int i=0; i < QMap.getX(); i++) {
+			for (int j=0; j<QMap.getY(); j++) {
+				
+				if (QMap.checkMapCoordinate(QuantifiedMap.mapToQMCoordinate(i), QuantifiedMap.mapToQMCoordinate(j)))
+					System.out.print("true ");
+				else
+					System.out.print("false ");
+			}
+			System.out.println();
+		}
+		
 		p.x = (random.nextInt(rightBound) % rightBound);
 		p.y = (random.nextInt(bottomBound) % bottomBound);
 		
+		
+		System.out.println(QuantifiedMap.coordinateQuantified(p.x));
+		System.out.println(QuantifiedMap.coordinateQuantified(p.y));
+		System.out.println(QMap.getX());
+		System.out.println(QMap.getY());
+		
+		
+		
 		//dopóki wylosowane punkty są już zajęte, losuj nowe
-		while (QuantifiedMap[mapToQMCoordinate(p.x)][mapToQMCoordinate(p.y)]) {
+		while (QMap.checkMapCoordinate(QuantifiedMap.coordinateQuantified(p.x), QuantifiedMap.coordinateQuantified(p.y)) != false) {
 			p.x = (random.nextInt(rightBound) % rightBound);
 			p.y = (random.nextInt(bottomBound) % bottomBound);
 		}
+		if (QuantifiedMap.coordinateQuantified(p.x) > QMap.getX() || QuantifiedMap.coordinateQuantified(p.y) > QMap.getY())
+			System.out.print("punkt poza zakresem");
 		
-		p.x = coordinateQuantified(p.x);
-		p.y = coordinateQuantified(p.y);
-		setQuantifiedMapCoord(p.x, p.y, true);
+		p.x = QuantifiedMap.coordinateQuantified(p.x);
+		p.y = QuantifiedMap.coordinateQuantified(p.y);
+		QMap.addMapItem(p.x, p.y);
 
 		return p;
+	}
+	
+	public static QuantifiedMap getQMap() {
+		return QMap;
 	}
 }

@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import pl.enigmatic.kck.components.Landmark;
 import pl.enigmatic.kck.map.Map;
 import pl.enigmatic.kck.map.MapFactory;
+import pl.enigmatic.kck.map.QuantifiedMap;
 import pl.enigmatic.kck.path.Path;
 import pl.enigmatic.kck.path.PathFinder;
 import pl.enigmatic.kck.ui.Painter;
@@ -88,7 +89,9 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 		
 		MapFactory.setBottomBound(p.getBottomBound());
 		MapFactory.setRightBound(p.getRightBound());
-		MapFactory.resizeQM(MapFactory.getQuantifiedMap(), MapFactory.getRightBound(), MapFactory.getBottomBound());
+		//zmiana rozmiaru mapy skwantowanej
+		MapFactory.getQMap().resizeQM(QuantifiedMap.mapToQMCoordinate(MapFactory.getRightBound()),
+				QuantifiedMap.mapToQMCoordinate(MapFactory.getBottomBound()));
 		Map map = MapFactory.createRandomMap(landmarksNumber);
 		
 		
