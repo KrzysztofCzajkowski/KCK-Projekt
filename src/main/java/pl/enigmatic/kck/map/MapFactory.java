@@ -60,34 +60,9 @@ public class MapFactory {
 
 	private static Point randomCoordinate() {
 		Point p = new Point();
-		
-		System.out.println("rozmiar mapy przy random: ");
-		System.out.println(QMap.getX());
-		System.out.println(QMap.getY());
-		
-		System.out.println(QMap.checkMapCoordinate(0, 0));
-		
-		for (int i=0; i < QMap.getX(); i++) {
-			for (int j=0; j<QMap.getY(); j++) {
-				
-				if (QMap.checkMapCoordinate(QuantifiedMap.mapToQMCoordinate(i), QuantifiedMap.mapToQMCoordinate(j)))
-					System.out.print("true ");
-				else
-					System.out.print("false ");
-			}
-			System.out.println();
-		}
-		
+
 		p.x = (random.nextInt(rightBound) % rightBound);
 		p.y = (random.nextInt(bottomBound) % bottomBound);
-		
-		
-		System.out.println(QuantifiedMap.coordinateQuantified(p.x));
-		System.out.println(QuantifiedMap.coordinateQuantified(p.y));
-		System.out.println(QMap.getX());
-		System.out.println(QMap.getY());
-		
-		
 		
 		//dopóki wylosowane punkty s¹ ju¿ zajête, losuj nowe
 		while (QuantifiedMap.mapToQMCoordinate(p.x) > QMap.getX()-1 || QuantifiedMap.mapToQMCoordinate(p.y) > QMap.getY()-1 ||
