@@ -68,18 +68,18 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 
 	public void actionPerformed(ActionEvent e) {
 		if (thread == null) {
-			button.setText("Zatrzymaj"); // odÅ‚Ä…cza przycisk losuj
+			button.setText("Zatrzymaj"); // od³¹cza przycisk losuj
 			thread = new Thread(this);
 			stop = false;
 			thread.start();
-		} else { // wchodzi tu jak kliknÄ™ zatrzymaj
+		} else { // wchodzi tu jak kliknê zatrzymaj
 			//thread.stop();
 			stop = true;
 			thread = null;
 			button.setText("Losuj");
 		}
 
-		// start wykonuje run na nowym wÄ…tku
+		// start wykonuje run na nowym w¹tku
 	}
 
 	public void run() {

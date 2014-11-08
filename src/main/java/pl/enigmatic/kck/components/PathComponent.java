@@ -38,21 +38,21 @@ public abstract class PathComponent {
 	}
 
 	/**
-	 * Sprawdza czy punkt p naleÅ¼y do II Ä‡wiartku pÅ‚aszczyzny kartezjaÅ„skiej
-	 * (wyÅ›wietlanej w oknie)
+	 * Sprawdza czy punkt p nale¿y do II æwiartki p³aszczyzny kartezjañskiej
+	 * (wyœwietlanej w oknie)
 	 * 
 	 * @param p
-	 * @return true jeÅ›li naleÅ¼y
+	 * @return true je¿li nale¿y
 	 */
 	public boolean plainContains(Point p) {
 		return ((p != null) && (p.x > 0) && (p.y > 0));
 	}
 
 	/**
-	 * Sprawdza czy komponent zaczyna siÄ™ lub koÅ„czy w punkcie p
+	 * Sprawdza czy komponent zaczyna siê lub kñczy w punkcie p
 	 * 
 	 * @param p
-	 * @return zwraca true jeÅ›li punkt p jest poczÄ…tkiem lub koÅ„cem tego
+	 * @return zwraca true je¿li punkt p jest pocz¹tkiem lub koñcem tego
 	 *         komponentu w przeciwnym razie false
 	 */
 	public boolean contains(Point p) {

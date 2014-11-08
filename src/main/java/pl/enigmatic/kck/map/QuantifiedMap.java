@@ -1,6 +1,6 @@
 package pl.enigmatic.kck.map;
 
-/**Klasa obsÅ‚ugujÄ…ca mapÄ™ zÅ‚oÅ¼onÄ… z kwadratÃ³w 50x50 pikseli.
+/**Klasa obs³uguj¹ca mapê z³o¿on¹ z kwadratów 50x50 pikseli.
  * 
  * @author Krzysztof Czajkowski
  *
@@ -10,15 +10,20 @@ public class QuantifiedMap {
 	private static int y = 3;
 	private static Boolean[][] map;
 	
-	/**Konstruktor przyjmujÄ…cy szerokoÅ›c i wysokoÅ›c (liczbÄ™ wierszy i kolumn).
+	/**Konstruktor przyjmuj¹cy szerokœæ i wysokoœæ (liczbê wierszy i kolumn).
 	 */
 	public QuantifiedMap(int a, int b) {
 		map = new Boolean[a][b];
 		x=a;
 		y=b;
+		
+		for (int i=0; i < x; i++) {
+			for (int j=0; j < y; j++)
+				map[i][j] = false;
+		}
 	}
 	
-	/**Dodaje element o podanych wspÃ³Å‚rzÄ™dnych do mapy skwantowanej.
+	/**Dodaje element o podanych wspó³rzêdnych do mapy skwantowanej.
 	 * 
 	 * @return Null
 	 */
@@ -28,7 +33,7 @@ public class QuantifiedMap {
 		map[i][j] = true;
 	}
 	
-	/**Usuwa element z kwadratu o podanych wspÃ³Å‚rzÄ™dnych.
+	/**Usuwa element z kwadratu o podanych wspó³rzêdnych.
 	 * 
 	 * @return Null
 	 */
@@ -38,7 +43,7 @@ public class QuantifiedMap {
 		map[i][j] = false;
 	}
 	
-	/**Sprawdza czy kwadrat zawierajÄ…cy punkt o podanych wspÃ³Å‚rzÄ™dnych jest zajÄ™ty.
+	/**Sprawdza czy kwadrat zawieraj¹cy punkt o podanych wspó³rzêdnych jest zajêty.
 	 * 
 	 * @return Boolean
 	 */
@@ -48,19 +53,22 @@ public class QuantifiedMap {
 		return map[i][j];
 	}
 	
-	/**Zmienia rozmiar mapy, tracÄ…c dotychczasowe informacje/
+	/**Zmienia rozmiar mapy, trac¹c dotychczasowe informacje/
 	 * 
 	 * @return Null
 	 */
 	public void resizeQM(int new_x, int new_y) {
-		int i = mapToQMCoordinate(new_x);
-		int j = mapToQMCoordinate(new_y);
 		x = new_x;
 		y = new_y;
-		map = new Boolean [i][j];
+		map = new Boolean [new_x][new_y];
+		
+		for (int i=0; i < new_x; i++) {
+			for (int j=0; j < new_y; j++)
+				map[i][j] = false;
+		}
 	}
 	
-	/**Zwraca szerokoÅ›c tablicy.
+	/**Zwraca szerokoœæ tablicy.
 	 * 
 	 * @return int
 	 */
@@ -68,7 +76,7 @@ public class QuantifiedMap {
 		return x;
 	}
 	
-	/**Zwraca wysokoÅ›c tablicy.
+	/**Zwraca wysokoœæ tablicy.
 	 * 
 	 * @return int
 	 */
@@ -76,7 +84,8 @@ public class QuantifiedMap {
 		return y;
 	}
 	
-	/**Zwraca Å›rodek przedziaÅ‚u odpowiedniego kwadratu o boku 50 pikseli, w ktÃ³rym znajdje siÄ™ argument x.
+	/**Zwraca œrodek przedzia³u odpowiedniego kwadratu o boku 50 pikseli,
+	 * w którym znajdje siê argument x.
 	 * 
 	 * @return int
 	 */
@@ -87,7 +96,7 @@ public class QuantifiedMap {
 		return i - 25;
 	}
 	
-	/**Zwraca dla danej wspÃ³Å‚rzÄ™dnej odpowiadajÄ…cy indeks w mapie skwantowanej.
+	/**Zwraca dla danej wspó³rzêdnej odpowiadaj¹cy indeks w mapie skwantowanej.
 	 * 
 	 * @return int
 	 */

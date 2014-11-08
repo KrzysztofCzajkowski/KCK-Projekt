@@ -21,11 +21,11 @@ public class Landmark {
 	private Point coordinate;
 
 	/**
-	 * Tworzy Landmarka z losowymi wspÃ³Å‚rzÄ™dnym, ktÃ³re wybiera z przedziaÅ‚u (0,
+	 * Tworzy Landmarka z losowymi wspó³rzêdnymi, które wybiera z przedzia³u (0,
 	 * rightBound/bottomBound)
 	 * 
 	 * @param name
-	 *            to nazwa landmarku czyli nazwa pliku jpg ktÃ³ry reprezentuje
+	 *            to nazwa landmarku czyli nazwa pliku jpg który reprezentuje
 	 *            ten landmark w formie graficznej
 	 * @param rightBound
 	 * @param bottomBound
