@@ -12,7 +12,7 @@ public enum Directions {
 
 	/**
 	 * @param id
-	 * @return Direction z danym id, lub null je≈õli id jest poza przedzia≈Çem <0,
+	 * @return Direction z danym id, lub null jeøli id jest poza przedzia≥em <0,
 	 *         7>
 	 */
 	public static Directions get(int id) {
@@ -22,7 +22,7 @@ public enum Directions {
 		}
 		System.out.println("Id w parametrze : " + id);
 		System.err
-				.println("Metoda Directions get(int id) zwr√≥ci≈Ça warto≈õƒá null ");
+				.println("Metoda Directions get(int id) zwrÛci≥a wartoúÊ null ");
 		return null;
 	}
 
@@ -38,10 +38,10 @@ public enum Directions {
 	/**
 	 * 
 	 * @param direction
-	 *            kierunek po kt√≥rym nie chcemy mieƒá naprzeciwleg≈Çego kierunku.
+	 *            kierunek po ktÛrym nie chcemy mieÊ naprzeciwleg≥ego kierunku.
 	 *            Np. Kierunku S w parametrze metoda wylosuje dowolny kierunek
-	 *            r√≥≈ºny od N itd...
-	 * @return Randomowy Direction NIEPRZECIWLEG≈ÅY do direction podanego w
+	 *            rÛøny od N itd...
+	 * @return Randomowy Direction NIEPRZECIWLEG£Y do direction podanego w
 	 *         parametrze
 	 */
 	public static Directions getRandom(Directions direction) {
@@ -76,10 +76,10 @@ public enum Directions {
 	}
 
 	/**
-	 * Sprawdza czy kierunek jest przeciwleg≈Çy do tego podanego w parametrze
+	 * Sprawdza czy kierunek jest przeciwleg≥y do tego podanego w parametrze
 	 * 
 	 * @param directions
-	 * @return true je≈õli jest przeciwleg≈Çy, false w innym wypadku.
+	 * @return true jeøli jest przeciwleg≥y, false w innym wypadku.
 	 */
 	public boolean isOpposite(Directions direction) {
 		return true;

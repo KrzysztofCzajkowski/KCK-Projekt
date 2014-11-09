@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import pl.enigmatic.kck.components.Landmark;
 import pl.enigmatic.kck.map.Map;
 import pl.enigmatic.kck.map.MapFactory;
+import pl.enigmatic.kck.map.QuantifiedMap;
 import pl.enigmatic.kck.path.Path;
 import pl.enigmatic.kck.path.PathFinder;
 import pl.enigmatic.kck.ui.Painter;
@@ -67,18 +68,18 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 
 	public void actionPerformed(ActionEvent e) {
 		if (thread == null) {
-			button.setText("Zatrzymaj"); // odÅ‚Ä…cza przycisk losuj
+			button.setText("Zatrzymaj"); // od³¹cza przycisk losuj
 			thread = new Thread(this);
 			stop = false;
 			thread.start();
-		} else { // wchodzi tu jak kliknÄ™ zatrzymaj
+		} else { // wchodzi tu jak kliknê zatrzymaj
 			//thread.stop();
 			stop = true;
 			thread = null;
 			button.setText("Losuj");
 		}
 
-		// start wykonuje run na nowym wÄ…tku
+		// start wykonuje run na nowym w¹tku
 	}
 
 	public void run() {
@@ -88,7 +89,9 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 		
 		MapFactory.setBottomBound(p.getBottomBound());
 		MapFactory.setRightBound(p.getRightBound());
-		MapFactory.resizeQM(MapFactory.getQuantifiedMap(), MapFactory.getRightBound(), MapFactory.getBottomBound());
+		//zmiana rozmiaru mapy skwantowanej
+		MapFactory.getQMap().resizeQM(QuantifiedMap.mapToQMCoordinate(MapFactory.getRightBound()),
+				QuantifiedMap.mapToQMCoordinate(MapFactory.getBottomBound()));
 		Map map = MapFactory.createRandomMap(landmarksNumber);
 		
 		

@@ -13,7 +13,7 @@ public class PathFinder {
 				Line l = new Line();
 				do {
 					System.out
-							.println("Szukam pierwszego odcinka w randomowej Å›cieÅ¼ce");
+							.println("Szukam pierwszego odcinka w randomowej œcie¿ce");
 				} while (!stopper.stop()
 						&& !l.setLine(Path.STARTPOINT, Directions.getRadndom()));
 				path.add(l);
@@ -25,7 +25,7 @@ public class PathFinder {
 				do {
 					do {
 						System.out.println("Szukam " + (i + 1)
-								+ " - tego odcinka w randomowej Å›cieÅ¼ce");
+								+ " - tego odcinka w randomowej œcie¿ce");
 					} while (!stopper.stop()
 							&& !l2.setLine(path.getSegment(i - 1).getEnd(),
 									Directions.getRandom(previousDirection)));
@@ -41,9 +41,9 @@ public class PathFinder {
 	}
 
 	/**
-	 * Tworzy randomowÄ… Å›cieÅ¼kÄ™ o dÅ‚ugoÅ›ci podanej w parametrze
-	 * @param length - dÅ‚ugoÅ›Ä‡ Å›cieÅ¼ki
-	 * @return RandomowÄ… Å›cieÅ¼kÄ™ dÅ‚ugoÅ›ci length
+	 * Tworzy randomow¹ œcie¿kê o d³ugoœci podanej w parametrze
+	 * @param length - d³ugoœæ œcie¿ki
+	 * @return Randomowa œcie¿ka d³ugoœci length
 	 */
 	public Path randomize(int length) {
 		return randomize(length, nonStopper);

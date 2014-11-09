@@ -10,8 +10,8 @@ public class Line extends PathComponent {
 	private static final int length = 100;
 	
 /**
- * Ustawia liniÄ™ z punktu A do Punktu B. Punkt B ustawia w zaleÅ¼noÅ›ci od kierunku.
- * UstawionÄ… liniÄ™ dodaje do Å›cieÅ¼ki (ArrayList path)
+ * Ustawia liniê z punktu A do Punktu B. Punkt B ustawia w zale¿noœci od kierunku.
+ * Ustawion¹ liniê dodaje do œcie¿ki (ArrayList path)
  * 
  */
 	public boolean setLine(Point A, Directions direction) {

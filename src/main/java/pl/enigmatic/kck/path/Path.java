@@ -33,7 +33,7 @@ public class Path implements Iterable<PathComponent> {
 	}
 
 	/**
-	 * sprawdza czy Å›ciezka ma jakiÅ› komponent zaczynajÄ…cy siÄ™ lub koÅ„czÄ…cy w
+	 * sprawdza czy œciezka ma jakiœ komponent zaczynaj¹cy siê lub koñcz¹cy w
 	 * punkcie p
 	 * 
 	 * @param point
