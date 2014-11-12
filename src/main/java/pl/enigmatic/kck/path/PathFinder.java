@@ -2,11 +2,15 @@ package pl.enigmatic.kck.path;
 
 import pl.enigmatic.kck.components.Directions;
 import pl.enigmatic.kck.components.Line;
+import pl.enigmatic.kck.components.PathComponent;
+
+import java.awt.Point;
+import java.util.ArrayList;
 
 public class PathFinder {
 	// stopper - interfejs
+	private Path path = new Path();
 	public Path randomize(int length, Stopper stopper) {
-		Path path = new Path();
 
 		for (int i = 0; i < length && !stopper.stop(); i++) {
 			if (i == 0) {
@@ -37,6 +41,10 @@ public class PathFinder {
 			}
 		}
 
+		return path;
+	}
+
+	public Path getPath() {
 		return path;
 	}
 

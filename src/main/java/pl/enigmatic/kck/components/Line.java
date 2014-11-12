@@ -18,7 +18,7 @@ public class Line extends PathComponent {
 		this.setStart(A);
 		this.direction = direction;
 
-		Point point;;
+		Point point;
 		switch (direction) {
 			case S: {
 				point = new Point(this.start.x, this.start.y + length);
@@ -53,6 +53,7 @@ public class Line extends PathComponent {
 		if (plainContains(point)) {
 			setEnd(point);
 			System.out.println("Zatwierdzony odcinek : A = " + this.start + "\tB = " + point );
+			
 			return true;
 		}
 		System.out.println("NIE Zatwierdzony odcinek : A = " + this.start + "\tB = " + point );
@@ -98,7 +99,7 @@ public class Line extends PathComponent {
 		this.direction = direction;
 	}
 
-	public int getLenght() {
+	public int getLength() {
 		return length;
 	}
 

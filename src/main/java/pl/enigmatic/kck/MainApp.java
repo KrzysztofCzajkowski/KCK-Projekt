@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import pl.enigmatic.kck.components.Landmark;
+import pl.enigmatic.kck.components.PathComponent;
 import pl.enigmatic.kck.map.Map;
 import pl.enigmatic.kck.map.MapFactory;
 import pl.enigmatic.kck.map.QuantifiedMap;
@@ -89,9 +90,22 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 		
 		MapFactory.setBottomBound(p.getBottomBound());
 		MapFactory.setRightBound(p.getRightBound());
-		//zmiana rozmiaru mapy skwantowanej
-		MapFactory.getQMap().resizeQM(QuantifiedMap.mapToQMCoordinate(MapFactory.getRightBound()),
-				QuantifiedMap.mapToQMCoordinate(MapFactory.getBottomBound()));
+		
+		// zmiana rozmiaru mapy skwantowanej
+		MapFactory.getQMap().resizeQM(QuantifiedMap.mapToQMCoordinate(MapFactory.getRightBound()) + 1,
+				QuantifiedMap.mapToQMCoordinate(MapFactory.getBottomBound()) + 1);
+		
+		// dodawanie elementów œcie¿ki do mapy skwantowanej
+		for(PathComponent pc : pathFinder.getPath().getSegments()) {
+			MapFactory.getQMap().addMapItem(pc.getStart().x, pc.getStart().y);
+			MapFactory.getQMap().addMapItem(pc.getEnd().x, pc.getEnd().y);
+			//MapFactory.getQMap().addMapItem(abs(pc.getStart().x - pc.getEnd().x),
+			//		abs(pc.getStart().y - pc.getEnd().y));
+			//TODO Dodawanie œrodka œcie¿ki do mapy skwantowanej.
+			
+		}
+		
+		// wstawianie landmarków
 		Map map = MapFactory.createRandomMap(landmarksNumber);
 		
 		

@@ -10,6 +10,7 @@ public abstract class PathComponent {
 
 	protected Point start;
 	protected Point end;
+	protected String type;
 
 	public void drawAsFirst(Graphics g) {
 		drawInner(g);
@@ -49,7 +50,7 @@ public abstract class PathComponent {
 	}
 
 	/**
-	 * Sprawdza czy komponent zaczyna siê lub kñczy w punkcie p
+	 * Sprawdza czy komponent zaczyna siê lub koñczy w punkcie p
 	 * 
 	 * @param p
 	 * @return zwraca true je¿li punkt p jest pocz¹tkiem lub koñcem tego
