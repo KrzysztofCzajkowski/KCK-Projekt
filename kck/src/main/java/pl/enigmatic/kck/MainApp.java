@@ -87,6 +87,7 @@ public class MainApp extends JFrame implements ActionListener, Runnable, PathFin
 		int landmarksNumber = Integer.parseInt(landmarksNumberTextField.getText());
 		Path p = pathFinder.randomize(length, this);
 		
+		System.out.println(p.toString());
 		MapFactory.setBottomBound(p.getBottomBound());
 		MapFactory.setRightBound(p.getRightBound());
 		//zmiana rozmiaru mapy skwantowanej

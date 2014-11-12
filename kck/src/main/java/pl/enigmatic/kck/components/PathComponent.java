@@ -88,4 +88,7 @@ public abstract class PathComponent {
 
 	public abstract void drawInner(Graphics g, int nr);
 
+	public String toString() {
+		return "Start: (" + start.x + "," + start.y + ") "  + " End: (" + start.x + "," + start.y + ") "+ " Direction: " + direction.toString() + " ";
+	}
 }

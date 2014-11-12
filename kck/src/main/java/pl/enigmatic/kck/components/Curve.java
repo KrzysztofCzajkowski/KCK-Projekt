@@ -131,5 +131,9 @@ public class Curve extends PathComponent {
 	
 		
 	}
+	
+	public String toString() {
+		return "Luk " + super.toString() + " Control Point: (" + controlPoint.x + "," + controlPoint.y + ")"; 
+	}
 
 }

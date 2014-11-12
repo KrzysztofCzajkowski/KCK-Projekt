@@ -104,4 +104,15 @@ public class Path implements Iterable<PathComponent> {
 	public Iterator<PathComponent> iterator() {
 		return segments.iterator();
 	}
+	
+	public String toString() {
+		String result = "";
+		int i = 0;
+		for (PathComponent p : segments) {
+			result += i + ". " +  p.toString();
+			result += "\n";
+			i++;
+		}
+		return result;
+	}
 }

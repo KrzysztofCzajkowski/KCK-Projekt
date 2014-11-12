@@ -45,6 +45,7 @@ public class PathFinder {
 		}
 		// Zamiana losowej ilości odcinków na łuki
 		int numberOfCurves = random.nextInt(path.size()) % path.size();
+		System.out.println("Liczba łuków: " + numberOfCurves);
 		int i = 0;
 		while (i < numberOfCurves) {
 			// indeks do zmiany krzywej
@@ -61,6 +62,7 @@ public class PathFinder {
 				}
 				path.set(index, c);
 				i++;
+				System.out.println("dodano łuk nr: " + i + "jako odcinek numer:" + index);
 			}
 		}
 		return path;

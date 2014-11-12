@@ -106,4 +106,7 @@ public class Line extends PathComponent {
 		return false;
 	}
 
+	public String toString() {
+		return "Odcinek " + super.toString();
+	}
 }
